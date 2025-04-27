@@ -13,8 +13,15 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     // (2) 관리자 페이지 열기
+    let status =false ; 
     $('footer .adminBtn').click(function(){
-        $('.adminWrap').css("display", "flex");
+
+        status = !status;
+        if(status){
+            $('.adminWrap').css("display", "flex");
+        }else{
+            $('.adminWrap').css("display", "none");
+        }
     });
 
     // (3) 업로드 버튼 클릭
