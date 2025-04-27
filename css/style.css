@@ -1,0 +1,113 @@
+
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Thin.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Thin.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Thin.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraLight.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraLight.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraLight.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Light.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Light.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Light.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Regular.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Regular.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Medium.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Medium.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Medium.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-SemiBold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-SemiBold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-SemiBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Bold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Bold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Bold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraBold.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraBold.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-ExtraBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'Pretendard';
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Black.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Black.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/fonts-archive/Pretendard/Pretendard-Black.otf') format('opentype');
+}
+
+body{ padding: 0;margin: 0; font-family: 'Pretendard'; font-weight: 300; background-color: #000; color: #fff; }
+.Wrap{ display: flex; flex-direction: column; min-height: 100vh; max-width: 500px; margin: 0 auto; padding: 0 20px; }
+button{ cursor: pointer; }
+
+main{ flex-grow: 1;}
+
+header{ text-align: center; padding: 20px 0; font-size: 20px; font-weight: 400; }
+.searchBox{ margin-bottom: 30px; display: flex; align-items: center; gap: 0; border: 1px solid #efefef; }
+.searchBox .ipt:focus-visible{ border: none !important; outline-offset: unset !important; outline:unset !important; }
+.searchBox .ipt{ font-size: 15px; text-align: center; color: #fff; flex-grow: 1; background-color: transparent; border: none; padding: 10px;  }
+.searchBox .searchBtn{ background: transparent; flex-shrink: 0; border: none;  padding: 10px; }
+.searchBox .searchBtn .icon{ width: 20px; filter: invert(100%); }
+
+.totalHint { text-align: center; padding: 20px 0; font-size: 15px; font-weight: 400; }
+
+/* .contentDiv{ display: none; } */
+
+.btnDiv{ margin-top: 20px; display: none; align-items: center; justify-content: center; gap: 10px; }
+.btnDiv .item{ border: 1px solid #fff; color: #fff; padding: 10px 20px; background-color: #000; flex-grow: 1; }  
+/* .resultDiv{ display: none; } */
+
+
+footer{ font-size: 12px; text-align:center; margin-top: 20px; }
+footer .adminBtn{ position: fixed; right: 0; top: 0; border: none; font-size: 13px; border-radius: 0; background: transparent; color: #fff; margin-top: 5px;  }
+footer .adminBtn .icon{ filter: invert(100%); width: 15px; }
+
+
+.adminWrap{  display: none; flex-direction: column; }
+.adminWrap .ipt[type="text"]{ margin-top: 10px; padding: 10px; }
+.adminWrap .uploadBtn{ padding: 10px; border: 1px solid #fff; color: #fff; background:#000; margin-top: 10px; }
