@@ -2,7 +2,7 @@
     "name": "힌트APP",
     "short_name": "힌트APP",
     "description": "힌트를 제공하는 웹 애플리케이션",
-    "start_url": ".",
+    "start_url": "/escape_company/",
     "display": "standalone",
     "background_color": "#fff",
     "icons": [
@@ -35,12 +35,6 @@
         "src": "/img/search.png",
         "sizes": "192x192",
         "type": "image/png"
-      }
-    ],
-    "related_applications": [
-      {
-        "platform": "play",
-        "url": "https://w1dus.github.io/escape_company/"
       }
     ]
   }
