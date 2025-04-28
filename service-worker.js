@@ -1,12 +1,12 @@
 const CACHE_NAME = 'hintapp-cache-v1';
 const urlsToCache = [
-  './',
-  './index.html',
-  './css/style.css',
-  './script/script.js',
-  './script/app.js',
-  './img/search.png',
-  './manifest.json',
+  '/escape_company/',          // 홈페이지 URL
+  '/escape_company/index.html',
+  '/escape_company/css/style.css',
+  '/escape_company/script/script.js',
+  '/escape_company/script/app.js',
+  '/escape_company/img/search.png',
+  '/escape_company/manifest.json',
   '/escape_company/img/search.png',
   '/escape_company/css/style.css'
 ];
