@@ -1,22 +1,9 @@
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open('hint-app-cache').then((cache) => {
-            return cache.addAll([
-                '/',
-                '/index.html',
-                '/style.css',
-                '/app.js',
-                '/img/icons/icon-192x192.png',
-                '/img/icons/icon-512x512.png'
-            ]);
-        })
-    );
-});
-
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-            return cachedResponse || fetch(event.request);
-        })
-    );
-});
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('./service-worker.js')
+    .then(function(registration) {
+    console.log('Service Worker 등록 성공:', registration.scope);
+    })
+    .catch(function(error) {
+    console.log('Service Worker 등록 실패:', error);
+    });
+}
