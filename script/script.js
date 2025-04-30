@@ -73,6 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("hintCount", totalHint.toString());
         $('.totalHint .count').text("0개");
         alert("힌트 갯수가 초기화되었습니다!");
+        $('.adminWrap').css("display", "none");
+
     });
 
     // ✅ (5) 힌트코드 검색
