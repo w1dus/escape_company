@@ -111,3 +111,7 @@ footer .adminBtn .icon{ filter: invert(100%); width: 15px; }
 .adminWrap{  display: none; flex-direction: column; }
 .adminWrap .ipt[type="text"]{ margin-top: 10px; padding: 10px; }
 .adminWrap .uploadBtn{ padding: 10px; border: 1px solid #fff; color: #fff; background:#000; margin-top: 10px; }
+
+
+.hint_reset_btn{ display: block; margin: 40px 0 0 0; }
+.hintResetBtn{  padding: 10px; border: 1px solid #fff; color: #fff; background:#000; margin-top: 10px; }

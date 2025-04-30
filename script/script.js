@@ -1,95 +1,110 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
 
-    let resultJson = []; // 기본값 배열
+    let resultJson = []; // 엑셀 데이터
     let totalHint = 0; 
-    let usedCodes = new Set(); // 중복없이 저장
+    let usedCodes = new Set(); 
+    let currentItem = null;
 
+    // ✅ (1) 로컬스토리지에서 hint 개수 불러오기
+    let savedHintCount = localStorage.getItem("hintCount");
+    if (savedHintCount !== null) {
+        totalHint = parseInt(savedHintCount);
+        $('.totalHint .count').text(totalHint + "개");
+    }
 
-    // (1) 페이지 로드할 때 로컬스토리지에서 불러오기
+    // ✅ (2) 힌트코드 불러오기
     let savedData = localStorage.getItem("myExcelData");
     if (savedData) {
         resultJson = JSON.parse(savedData);
         console.log("불러온 데이터:", resultJson);
     }
 
-    // (2) 관리자 페이지 열기
-    let status =false ; 
-    $('footer .adminBtn').click(function(){
-
+    // 관리자 페이지 열기 토글
+    let status = false;
+    $('footer .adminBtn').click(function () {
         status = !status;
-        if(status){
-            $('.adminWrap').css("display", "flex");
-        }else{
-            $('.adminWrap').css("display", "none");
-        }
+        $('.adminWrap').css("display", status ? "flex" : "none");
     });
 
-    // (3) 업로드 버튼 클릭
-    $('.uploadBtn').click(function(){
-        let password = $('.adminWrap input[type="text"]').val();
+    // ✅ (3) 엑셀 업로드
+    $('.uploadBtn').click(function () {
+        let password = $('.adminWrap input[type="text"]').eq(0).val();
         let file = $('.adminWrap input[type="file"]')[0].files[0];
 
-        if(password !== "9132"){
+        if (password !== "9132") {
             alert("비밀번호가 틀렸습니다.");
             return;
         }
 
-        if(!file){
+        if (!file) {
             alert("파일을 선택해주세요.");
             return;
         }
 
         let reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             let data = new Uint8Array(e.target.result);
-            let workbook = XLSX.read(data, {type: 'array'});
-
-            let firstSheetName = workbook.SheetNames[0];
-            let worksheet = workbook.Sheets[firstSheetName];
-
+            let workbook = XLSX.read(data, { type: 'array' });
+            let worksheet = workbook.Sheets[workbook.SheetNames[0]];
             resultJson = XLSX.utils.sheet_to_json(worksheet);
-
-            // (4) 저장하기
             localStorage.setItem("myExcelData", JSON.stringify(resultJson));
-
-            console.log("업로드 완료!", resultJson);
+            alert("업로드 완료!");
             $('.adminWrap').css("display", "none");
         };
         reader.readAsArrayBuffer(file);
     });
 
-    
-    $('.searchBtn').click(function() {
-        let code = $('.searchBox input').val().trim(); 
+    // ✅ (4) 힌트 리셋
+    $('.hintResetBtn').click(function () {
+        const resetChecked = $('.hint_reset_btn input[type="checkbox"]').is(':checked');
+        const password = $('.adminWrap input[type="text"]').eq(1).val();
+
+        if (!resetChecked) {
+            alert("체크박스를 먼저 선택해주세요.");
+            return;
+        }
+        if (password !== "9132") {
+            alert("비밀번호가 틀렸습니다.");
+            return;
+        }
+
+        totalHint = 0;
+        usedCodes.clear();
+        localStorage.setItem("hintCount", totalHint.toString());
+        $('.totalHint .count').text("0개");
+        alert("힌트 갯수가 초기화되었습니다!");
+    });
+
+    // ✅ (5) 힌트코드 검색
+    $('.searchBtn').click(function () {
+        let code = $('.searchBox input').val().trim();
         if (!code) {
             alert("힌트코드를 입력해주세요.");
             return;
         }
-    
+
         let found = resultJson.find(item => item.힌트코드 == code);
         if (found) {
             currentItem = found;
             $('.contentDiv').text(found.힌트);
-            $('.resultDiv').text(""); // 정답 비우기
-    
-            // ✅ 처음 본 힌트코드라면 힌트 사용 카운트 +1
+            $('.resultDiv').text("");
+
             if (!usedCodes.has(code)) {
                 totalHint++;
-                usedCodes.add(code); // 사용한 코드로 저장
+                usedCodes.add(code);
+                localStorage.setItem("hintCount", totalHint.toString()); // ✅ 저장
             }
-    
+
             $('.totalHint .count').text(totalHint + "개");
             $('.btnDiv').show();
         } else {
             alert("해당 힌트코드를 찾을 수 없습니다.");
-            $('.contentDiv').text("");
-            $('.resultDiv').text("");
+            $('.contentDiv, .resultDiv').text("");
             $('.btnDiv').hide();
         }
     });
-    
 
-    $('.showResult').click(function() {
+    $('.showResult').click(function () {
         if (currentItem) {
             $('.resultDiv').text(currentItem.정답);
         } else {
@@ -97,12 +112,10 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     });
 
-
-    $('.backBtn').click(function() {
+    $('.backBtn').click(function () {
         $('.btnDiv').hide();
         $('.searchBox input').val('');
-        $('.contentDiv').text('');
-        $('.resultDiv').text('');
+        $('.contentDiv, .resultDiv').text('');
         currentItem = null;
     });
 });
